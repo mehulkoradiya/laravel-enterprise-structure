@@ -1,0 +1,35 @@
+{
+  "name": "mehul/laravel-enterprise-structure",
+  "description": "Opinionated, optional project structure for long-term Laravel applications",
+  "type": "library",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Vendor\\EnterpriseStructure\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Vendor\\EnterpriseStructure\\Tests\\": "tests/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Vendor\\EnterpriseStructure\\Providers\\EnterpriseStructureServiceProvider"
+      ]
+    }
+  },
+  "require": {
+    "php": "^8.1"
+  },
+  "require-dev": {
+    "pestphp/pest": "^4.3",
+    "orchestra/testbench": "^10.9"
+  },
+  "config": {
+    "allow-plugins": {
+      "pestphp/pest-plugin": true
+    }
+  }
+}
