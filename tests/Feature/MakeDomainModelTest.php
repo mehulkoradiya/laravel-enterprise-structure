@@ -2,19 +2,19 @@
 
 use Illuminate\Support\Facades\File;
 
-it('creates action class', function () {
+it('creates domain model', function () {
 
-    $this->artisan('make:action User/CreateUser --force')
+    $this->artisan('make:domain-model User/User --force')
         ->assertExitCode(0);
 
-    $file = app_path('Domains/User/Actions/CreateUser.php');
+    $file = app_path('Domains/User/Models/User.php');
 
     expect(File::exists($file))->toBeTrue();
 
     $content = File::get($file);
 
-    expect($content)->toContain('class CreateUser');
-    expect($content)->toContain('namespace App\\Domains\\User\\Actions');
+    expect($content)->toContain('class User');
+    expect($content)->toContain('namespace App\\Domains\\User\\Models');
 
     afterEach(function () {
         File::deleteDirectory(app_path('Domains'));
