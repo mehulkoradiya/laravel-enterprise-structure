@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\File;
 
 class MakeDomainCommand extends Command
 {
-    protected $signature = 'make:domain {name}';
+    protected $signature = 'make:domain {name} {--force}';
     protected $description = 'Create a new domain structure';
 
     public function handle()
@@ -22,8 +22,8 @@ class MakeDomainCommand extends Command
         $domainsPath = config('enterprise-structure.paths.domains');
         $domainPath = $domainsPath . DIRECTORY_SEPARATOR . $domain;
 
-        if (File::exists($domainPath)) {
-            $this->error("Domain [{$domain}] already exists.");
+        if (File::exists($domainPath) && ! $this->option('force')) {
+            $this->error("Domain [{$domain}] already exists. Use --force to overwrite.");
             return Command::FAILURE;
         }
 

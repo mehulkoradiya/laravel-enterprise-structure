@@ -9,7 +9,7 @@ use Vendor\EnterpriseStructure\Support\NamespaceResolver;
 
 class MakeActionCommand extends Command
 {
-    protected $signature = 'make:action {name}';
+    protected $signature = 'make:action {name} {--force}';
     protected $description = 'Create a domain action';
 
     public function handle()
@@ -18,8 +18,8 @@ class MakeActionCommand extends Command
 
         $path = PathResolver::domainActionPath($domain, $class);
 
-        if (File::exists($path)) {
-            $this->error("Action already exists.");
+        if (File::exists($path) && ! $this->option('force')) {
+            $this->error("Action already exists. Use --force to overwrite.");
             return Command::FAILURE;
         }
 

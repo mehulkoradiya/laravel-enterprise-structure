@@ -9,7 +9,7 @@ use Vendor\EnterpriseStructure\Support\NamespaceResolver;
 
 class MakeUseCaseCommand extends Command
 {
-    protected $signature = 'make:usecase {name}';
+    protected $signature = 'make:usecase {name} {--force}';
     protected $description = 'Create an application use case';
 
     public function handle()
@@ -18,8 +18,8 @@ class MakeUseCaseCommand extends Command
 
         $path = PathResolver::useCasePath($domain, $class);
 
-        if (File::exists($path)) {
-            $this->error("UseCase already exists.");
+        if (File::exists($path) && ! $this->option('force')) {
+            $this->error("UseCase already exists. Use --force to overwrite.");
             return Command::FAILURE;
         }
 
