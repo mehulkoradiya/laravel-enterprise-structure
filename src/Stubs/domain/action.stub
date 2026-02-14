@@ -2,10 +2,16 @@
 
 namespace {{ namespace }};
 
+use Illuminate\Support\Facades\DB;
+
 class {{ class }}
 {
-    public static function run(array $data)
+    public function execute(array $payload)
     {
-        //
+        return DB::transaction(function () use ($payload) {
+
+            // Business logic here
+
+        });
     }
 }
