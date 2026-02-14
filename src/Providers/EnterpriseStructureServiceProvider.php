@@ -7,6 +7,8 @@ use Vendor\EnterpriseStructure\Commands\InstallStructureCommand;
 use Vendor\EnterpriseStructure\Commands\MakeDomainCommand;
 use Vendor\EnterpriseStructure\Commands\MakeActionCommand;
 use Vendor\EnterpriseStructure\Commands\MakeUseCaseCommand;
+use Vendor\EnterpriseStructure\Commands\MakeDomainModelCommand;
+use Vendor\EnterpriseStructure\Commands\MakeRepositoryCommand;
 
 class EnterpriseStructureServiceProvider extends ServiceProvider
 {
@@ -27,6 +29,8 @@ class EnterpriseStructureServiceProvider extends ServiceProvider
                 MakeDomainCommand::class,
                 MakeActionCommand::class,
                 MakeUseCaseCommand::class,
+                MakeDomainModelCommand::class,
+                MakeRepositoryCommand::class,
             ]);
 
             $this->publishes([
